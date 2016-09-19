@@ -154,15 +154,7 @@
 
 - (void) checkForLibraryImage
 {
-    if ( !self.cameraView.photoLibraryButton.isHidden && [self.parentViewController.class isSubclassOfClass:NSClassFromString(@"DBCameraContainerViewController")] ) {
-        if ( [ALAssetsLibrary authorizationStatus] !=  ALAuthorizationStatusDenied ) {
-            __weak DBCameraView *weakCamera = self.cameraView;
-            [[DBLibraryManager sharedInstance] loadLastItemWithBlock:^(BOOL success, UIImage *image) {
-                [weakCamera.photoLibraryButton setBackgroundImage:image forState:UIControlStateNormal];
-            }];
-        }
-    } else
-        [self.cameraView.photoLibraryButton setHidden:YES];
+    [self.cameraView.photoLibraryButton setHidden:YES];
 }
 
 - (BOOL) prefersStatusBarHidden
